@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: Gradle 4.10.2
+Main-Class: eu.appguru.DUMB
+Specification-Title: DUMB
+Specification-Version: alpha
+Implementation-Title: eu.appguru.DUMB
+Implementation-Version: alpha
+Application-Name: DUMB
+

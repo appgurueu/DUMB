@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+
+description = 'DUMB'
+group = 'eu.appguru'
+
+mainClassName = 'eu.appguru.DUMB'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    // jodconverter Open Document Converter @ https://jodconverter.org
+    compile 'org.jodconverter:jodconverter-local:4.2.2'
+    // SLF4J logging
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+    // jsoup HTML & XML parser library @ https://jsoup.org
+    compile 'org.jsoup:jsoup:1.12.1'
+    testCompile 'junit:junit:4.12'
+}
+
+jar {
+    manifest {
+        attributes(
+            'Created-By': "Gradle ${gradle.gradleVersion}",
+            'Main-Class': "eu.appguru.DUMB",
+            'Specification-Title': "DUMB",
+            'Specification-Version': "alpha",
+            'Implementation-Title': "eu.appguru.DUMB",
+            'Implementation-Version': "alpha",
+            'Application-Name': "DUMB"
+        )
+    }
+}
