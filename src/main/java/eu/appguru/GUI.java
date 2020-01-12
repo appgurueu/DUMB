@@ -117,7 +117,7 @@ public class GUI extends JFrame {
         }
         
         try {
-            ImageIcon icon = new ImageIcon("res/DUMB_256x256.png");
+            ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("res/DUMB_256x256.png"));
             super.setIconImage(icon.getImage());
         } catch (Exception e) {
             DUMB.LOGGER.error("Loading icon failed", e);
@@ -186,7 +186,6 @@ public class GUI extends JFrame {
         JPanel options = new JPanel(new GridBagLayout());
         JComboBox background_op = new JComboBox(new String[] {"Fill", "Margin", "Kill"});
         ((JLabel)background_op.getRenderer()).setHorizontalAlignment(JLabel.RIGHT);
-        //background_op.setEnabled(false);
         con.gridy=0;
         con.gridx = 0;
         options.add(new JLabel("Background:"), con);
@@ -308,8 +307,6 @@ public class GUI extends JFrame {
                         conf.put(margin_names[c/2], toggle.isSelected() ? (double)((JSpinner)margins[c+1]).getValue():(double)margin.getValue());
                     }
                 }
-                System.out.println(conf);
-                //conf.put("")
                 new Worker("Fixing", status, new FixingWorker(source_file, destination_file, new HashMap())).start();
             } else {
                 new Worker("Conversion", status, new ConversionWorker(source_file, destination_file)).start();
@@ -424,7 +421,11 @@ public class GUI extends JFrame {
         prefs.add(confs);
         JPanel tab_container = new JPanel();
         tab_container.setBackground(null);
-        infos.setText(FileUtils.readFileToString(new File("res/About.html"), StandardCharsets.UTF_8));
+        try {
+            infos.setText(new String(getClass().getClassLoader().getResourceAsStream("res/About.html").readAllBytes()));
+        } catch (Exception ex) {
+            DUMB.LOGGER.error("Failed to load about page", ex);
+        }
         about.addActionListener(ReplaceContentListener(infos, tab_container));
         opts.addActionListener(ReplaceContentListener(prefs, tab_container));
         log.setEditable(false);

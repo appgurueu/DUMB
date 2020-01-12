@@ -7,8 +7,8 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
 apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'application'
 
@@ -33,7 +33,16 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
+shadowJar {
+    into 'res', {
+        from 'res'
+    }
+}
+
 jar {
+    into 'res', {
+        from 'res'
+    }
     manifest {
         attributes(
             'Created-By': "Gradle ${gradle.gradleVersion}",
