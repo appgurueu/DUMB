@@ -1,4 +1,4 @@
-![DUMB logo](https://raw.githubusercontent.com/appgurueu/DUMB/master/res/DUMB_256x256.png)
+![DUMB logo](https://raw.githubusercontent.com/appgurueu/DUMB/master/res/DUMB_300x200_nomargin.png)
 
 # DUMB
 
