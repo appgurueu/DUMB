@@ -2,7 +2,7 @@
 
 # DUMB
 
-[DUMB](https://github.com/appgurueu/DUMB) is a standalone Java application.
+[DUMB](https://github.com/appgurueu/DUMB) is a standalone Java application. A [demonstration](https://youtu.be/7yY4zZ9cA-c) is available on YouTube.
 DUMB's main purpose is to fix PDFs exported with SMART notebook software. Additionally, documents can be converted without fixing them.
 Made by Lars Müller aka appgurueu and licensed under the MIT license.
 

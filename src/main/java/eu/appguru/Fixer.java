@@ -111,14 +111,9 @@ public class Fixer {
             cs = "y";
             dim = "svg:height";
         }
-                System.out.println(min_c[0]);
-        System.out.println(min_c[1]);
-        System.out.println(max_c[0]);
-        System.out.println(max_c[1]);
         double current_width = max_c[0] - min_c[0];
         double current_height = max_c[1] - min_c[1];
         double scale = desired_width/current_width;
-        System.out.println(scale);
         double new_height = current_height*scale;
         layout.attr("fo:page-height", CM(new_height+offsets.get("bottom")+offsets.get("top")));
         Function<Double, Double> convertX = x -> (x-min_c[0])*scale+offsets.get("left");
