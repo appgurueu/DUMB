@@ -9,8 +9,19 @@ buildscript {
 
 apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'java'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 apply plugin: 'jacoco'
 apply plugin: 'application'
+
+sourceSets {
+    main {
+        output.resourcesDir = "build/classes/java/main/res"
+        resources {
+            srcDirs "res"
+        }
+    }
+}
 
 description = 'DUMB'
 group = 'eu.appguru'
@@ -48,9 +59,9 @@ jar {
             'Created-By': "Gradle ${gradle.gradleVersion}",
             'Main-Class': "eu.appguru.DUMB",
             'Specification-Title': "DUMB",
-            'Specification-Version': "alpha",
+            'Specification-Version': "beta",
             'Implementation-Title': "eu.appguru.DUMB",
-            'Implementation-Version': "alpha",
+            'Implementation-Version': "beta",
             'Application-Name': "DUMB"
         )
     }

@@ -389,6 +389,8 @@ public class GUI extends JFrame {
             boolean selected = ((JCheckBox)ae.getSource()).isSelected();
             if (!selected) {
                 Manager.setOfficeHome(null);
+            } else {
+                Manager.setOfficeHome(office_home.getSelectedFile());
             }
         });
         confs.add(toggle_office_home, conf_constraints);

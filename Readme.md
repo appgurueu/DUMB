@@ -6,18 +6,18 @@
 DUMB's main purpose is to fix PDFs exported with SMART notebook software. Additionally, documents can be converted without fixing them.
 Made by Lars Müller aka appgurueu and licensed under the MIT license.
 
-# Requirements
+## Requirements
 
 * Java Runtime Environment (JRE) 8 or higher
 * "Apache OpenOffice or LibreOffice; the latest stable version is usually recommended" - [for jodconverter](https://github.com/sbraconnier/jodconverter/wiki/System-Requirements)
 
 Note that some conversions may take long (like PDF to FODG) as the files which need to be fixed are flawed and bloated.
 
-# Execution
+## Execution
 
 [Download the JAR](https://raw.githubusercontent.com/appgurueu/DUMB/master/build/libs/DUMB-alpha-all.jar) and then execute it using `java -jar DUMB.jar {arguments}`.
 
-## Command
+### Command
 
 Arguments are passed as a sequence of `<key> <value>`-pairs. Possible keys are:
 
@@ -29,7 +29,7 @@ Arguments are passed as a sequence of `<key> <value>`-pairs. Possible keys are:
 
 If the arguments are invalid, the GUI is spawned.
 
-### Examples
+#### Examples
 
 Convert a PDF into a FODG:
 
@@ -54,3 +54,8 @@ Open the GUI:
 ```bash
 java -jar DUMB.jar operation gui or literally everything with a different format (also zero arguments)
 ```
+
+## Versions
+
+* `alpha`: Initial version, contained problems
+* `beta`: Newest version

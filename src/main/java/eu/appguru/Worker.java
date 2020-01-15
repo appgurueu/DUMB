@@ -24,6 +24,7 @@ public class Worker extends Thread {
     public void run() {
         GUI.setLabel(status, "Waiting");
         while (RUNNING_THREADS < 0 || QUEUED_MANAGER != null) {
+            Manager.checkQueue();
             try {
                 Thread.sleep(20);
             } catch (InterruptedException ex) {

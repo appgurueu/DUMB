@@ -13,19 +13,22 @@ import org.jodconverter.office.OfficeUtils;
 public class Manager {
 
     public static volatile int RUNNING_THREADS = 0;
-    public static volatile OfficeManager OFFICE_MANAGER;
+    private static volatile OfficeManager OFFICE_MANAGER;
     public static volatile OfficeManager QUEUED_MANAGER;
 
     public static void checkQueue() {
         if (RUNNING_THREADS == 0 && QUEUED_MANAGER != null) {
             RUNNING_THREADS = -1;
-            OFFICE_MANAGER = QUEUED_MANAGER;
-            try {
-                OFFICE_MANAGER.start();
-            } catch (OfficeException e) {
+            synchronized (OFFICE_MANAGER) {
+                free();
+                OFFICE_MANAGER = QUEUED_MANAGER;
+                try {
+                    OFFICE_MANAGER.start();
+                } catch (OfficeException e) {
 
-            } finally {
-                RUNNING_THREADS = 0;
+                } finally {
+                    RUNNING_THREADS = 0;
+                }
             }
         }
     }
@@ -44,8 +47,9 @@ public class Manager {
     public static void setOfficeHome(File f) {
         LocalOfficeManager.Builder builder = LocalOfficeManager.builder().install();
         if (f != null) {
-            QUEUED_MANAGER = builder.officeHome(f).build();
+            builder = builder.officeHome(f);
         }
+        QUEUED_MANAGER = builder.build();
         checkQueue();
     }
 

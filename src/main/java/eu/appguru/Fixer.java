@@ -187,6 +187,7 @@ public class Fixer {
         
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(out))) {
             writer.write(doc.html());
+            writer.close();
         } catch (Exception e) {
             DUMB.LOGGER.error("Writing fixed FODG failed", e);
         }

@@ -17,7 +17,7 @@ public class Converter {
     }
     public static void convertAndFix(File in, File out, Map<String, Object> attrs) throws IOException, OfficeException {
         String in_type = FilenameUtils.getExtension(in.getName()).toLowerCase();
-        String out_type = FilenameUtils.getExtension(in.getName()).toLowerCase();
+        String out_type = FilenameUtils.getExtension(out.getName()).toLowerCase();
         File tmp_in = in_type.equals("fodg") ? in:File.createTempFile("DUMB-tmp-in-", FilenameUtils.EXTENSION_SEPARATOR_STR+"fodg");
         File tmp_out = out_type.equals("fodg") ? out:File.createTempFile("DUMB-tmp-out-", FilenameUtils.EXTENSION_SEPARATOR_STR+"fodg");
         if (in != tmp_in) {
