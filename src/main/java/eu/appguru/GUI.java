@@ -384,6 +384,7 @@ public class GUI extends JFrame {
                 Manager.setOfficeHome(office_home.getSelectedFile());
             }
         });
+        open_office_home.setEnabled(false);
         JCheckBox toggle_office_home = Toggle("Office Home: ", open_office_home);
         toggle_office_home.addActionListener((ActionEvent ae) -> {
             boolean selected = ((JCheckBox)ae.getSource()).isSelected();

@@ -15,7 +15,7 @@ Note that some conversions may take long (like PDF to FODG) as the files which n
 
 ## Execution
 
-[Download the JAR](https://raw.githubusercontent.com/appgurueu/DUMB/master/build/libs/DUMB-alpha-all.jar) and then execute it using `java -jar DUMB.jar {arguments}`.
+[Download the JAR](https://raw.githubusercontent.com/appgurueu/DUMB/master/build/libs/DUMB-beta-all.jar) and then execute it using `java -jar DUMB.jar {arguments}`.
 
 ### Command
 

@@ -25,8 +25,9 @@ public class Manager {
                 try {
                     OFFICE_MANAGER.start();
                 } catch (OfficeException e) {
-
+                    DUMB.LOGGER.error("Failed to set the queued manager", e);
                 } finally {
+                    QUEUED_MANAGER = null;
                     RUNNING_THREADS = 0;
                 }
             }

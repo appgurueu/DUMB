@@ -17,10 +17,13 @@ import org.slf4j.impl.SimpleLogger;
 public class DUMB {
     
     static {
+        // Simple Logger
         System.setProperty(SimpleLogger.SHOW_THREAD_NAME_KEY, "false");
         System.setProperty(SimpleLogger.LOG_FILE_KEY, "System.out");
         System.setProperty(SimpleLogger.LEVEL_IN_BRACKETS_KEY, "true");
         System.setProperty(SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "INFO");
+        // Jodconverter
+        System.setProperty("org.jodconverter.taskExecutionTimeout", Integer.toString(60000*5));
     }
     
     public static Logger LOGGER = LoggerFactory.getLogger(DUMB.class);;
