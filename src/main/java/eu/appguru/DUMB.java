@@ -77,10 +77,6 @@ public class DUMB {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //HashMap<String, Object> attrs = new HashMap();
-        //attrs.put("pages", "merge");
-        //Fixer.fix(new File("/home/lars/Dokumente/11_Waagerechter_Wurf.fodg"), new File("/home/lars/Dokumente/11_Waagerechter_Wurf_Fixed.fodg"), attrs);
-        //if (true) {return;}
         Thread.currentThread().setName("DUMB");
         Map<String, Object> arguments = readArguments(args);
         if (arguments == null) {
