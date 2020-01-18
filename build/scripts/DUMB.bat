@@ -63,7 +63,7 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\DUMB-beta.jar;%APP_HOME%\lib\jodconverter-local-4.2.2.jar;%APP_HOME%\lib\slf4j-simple-1.7.25.jar;%APP_HOME%\lib\jodconverter-core-4.2.2.jar;%APP_HOME%\lib\slf4j-api-1.7.25.jar;%APP_HOME%\lib\jsoup-1.12.1.jar;%APP_HOME%\lib\juh-4.1.2.jar;%APP_HOME%\lib\jurt-4.1.2.jar;%APP_HOME%\lib\unoil-4.1.2.jar;%APP_HOME%\lib\ridl-4.1.2.jar;%APP_HOME%\lib\commons-io-2.6.jar;%APP_HOME%\lib\commons-lang3-3.7.jar;%APP_HOME%\lib\gson-2.8.5.jar
+set CLASSPATH=%APP_HOME%\lib\DUMB-gamma.jar;%APP_HOME%\lib\jodconverter-local-4.2.2.jar;%APP_HOME%\lib\slf4j-simple-1.7.25.jar;%APP_HOME%\lib\jodconverter-core-4.2.2.jar;%APP_HOME%\lib\slf4j-api-1.7.25.jar;%APP_HOME%\lib\jsoup-1.12.1.jar;%APP_HOME%\lib\juh-4.1.2.jar;%APP_HOME%\lib\jurt-4.1.2.jar;%APP_HOME%\lib\unoil-4.1.2.jar;%APP_HOME%\lib\ridl-4.1.2.jar;%APP_HOME%\lib\commons-io-2.6.jar;%APP_HOME%\lib\commons-lang3-3.7.jar;%APP_HOME%\lib\gson-2.8.5.jar
 
 @rem Execute DUMB
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %DUMB_OPTS%  -classpath "%CLASSPATH%" eu.appguru.DUMB %CMD_LINE_ARGS%

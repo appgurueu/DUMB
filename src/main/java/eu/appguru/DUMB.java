@@ -107,7 +107,7 @@ public class DUMB {
             try {
                 String op = (String)arguments.get("operation");
                 String oh = (String)arguments.get("officehome");
-                Manager.setOfficeHome(oh == null ? new File(oh):null);
+                Manager.setOfficeHome(oh == null ? null:new File(oh));
                 if (op.equals("fix")) {
                     Converter.convertAndFix(new File((String)arguments.get("source")), new File((String)arguments.get("destination")), arguments);
                 } else {

@@ -267,6 +267,9 @@ public class Fixer {
                 doc.getElementsByTag("style:page-layout-properties").attr("fo:page-height", Unit.cm(total_height));
                 write(doc, out);
             } else {
+                if (out.exists()) {
+                    out.delete();
+                }
                 out.mkdir();
                 String ext = FilenameUtils.getExtension(out.getName());
                 for (int i = 0; i < pages.size(); i++) {
@@ -277,7 +280,7 @@ public class Fixer {
                     draw_page.children().remove();
                     clone.getElementsByTag("draw:page").get(0).insertChildren(0, page.content);
                     page.scaleStyles(clone, i);
-                    write(clone, new File(out + File.separator + (i + 1) + FilenameUtils.EXTENSION_SEPARATOR_STR + ext));
+                    write(clone, new File(out.getAbsolutePath() + File.separator + (i + 1) + FilenameUtils.EXTENSION_SEPARATOR_STR + ext));
                 }
             }
         }

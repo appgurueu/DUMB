@@ -59,9 +59,9 @@ jar {
             'Created-By': "Gradle ${gradle.gradleVersion}",
             'Main-Class': "eu.appguru.DUMB",
             'Specification-Title': "DUMB",
-            'Specification-Version': "beta",
+            'Specification-Version': "gamma",
             'Implementation-Title': "eu.appguru.DUMB",
-            'Implementation-Version': "beta",
+            'Implementation-Version': "gamma",
             'Application-Name': "DUMB"
         )
     }

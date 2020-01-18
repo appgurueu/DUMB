@@ -51,12 +51,24 @@ public class Manager {
             builder = builder.officeHome(f);
         }
         QUEUED_MANAGER = builder.build();
-        checkQueue();
+        if (OFFICE_MANAGER == null) {
+            OFFICE_MANAGER = QUEUED_MANAGER;
+            try {
+                OFFICE_MANAGER.start();
+            } catch (Exception e) {
+                DUMB.LOGGER.error("Setting office home failed", e);
+            }
+            QUEUED_MANAGER = null;
+        } else {
+            checkQueue();
+        }
     }
 
     public static void free() {
         try {
-            OfficeUtils.stopQuietly(OFFICE_MANAGER);
+            if (OFFICE_MANAGER != null) {
+                OfficeUtils.stopQuietly(OFFICE_MANAGER);
+            }
         } catch (Exception e) {
             DUMB.LOGGER.error("Stopping office manager failed", e);
         }
