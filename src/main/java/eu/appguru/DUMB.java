@@ -53,6 +53,13 @@ public class DUMB {
             }
             arguments.put("background", background);
         }
+        if (arguments.containsKey("pages")) {
+            String pages = ((String)arguments.get("pages")).toLowerCase();
+            if (!pages.equals("folder") && !pages.equals("merge")) {
+                return null;
+            }
+            arguments.put("pages", pages);
+        }
         for (String num:new String[] {"width", "margin", "margin-left", "margin-right", "margin-top", "margin-bottom"}) {
             if (arguments.containsKey(num)) {
                 String val = (String)arguments.get(num);
@@ -70,6 +77,10 @@ public class DUMB {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //HashMap<String, Object> attrs = new HashMap();
+        //attrs.put("pages", "merge");
+        //Fixer.fix(new File("/home/lars/Dokumente/11_Waagerechter_Wurf.fodg"), new File("/home/lars/Dokumente/11_Waagerechter_Wurf_Fixed.fodg"), attrs);
+        //if (true) {return;}
         Thread.currentThread().setName("DUMB");
         Map<String, Object> arguments = readArguments(args);
         if (arguments == null) {
