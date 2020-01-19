@@ -64,16 +64,28 @@ public class Fixer {
             }
         }
 
+        String text_style = null;
         // Remove date and other text (which is not part of the pages)
         for (Element e : doc.getElementsByTag("draw:page").get(0).children()) {
             if (e.tagName().equalsIgnoreCase("draw:frame")) {
                 if (e.attr("draw:style-name").equals(first_style) && !e.getElementsByTag("text:span").isEmpty() && (e.hasText() || !e.getElementsByTag("text:s").isEmpty())) {
+                    text_style = e.attr("draw:text-style-name");
                     e.remove();
                 }
             }
         }
 
-        // Find border lines & remove text at the end of the document
+        text_style = doc.getElementsByAttributeValue("style:name", text_style).get(0).nextElementSibling().attr("style:name");
+        
+        for (Element e : doc.getElementsByTag("draw:page").get(0).children()) {
+            if (e.tagName().equalsIgnoreCase("draw:frame")) {
+                if (!e.getElementsByTag("text:span").isEmpty() && (e.hasText() || !e.getElementsByTag("text:s").isEmpty()) && e.attr("draw:text-style-name").equals(text_style)) {
+                    e.remove();
+                }
+            }
+        }
+
+        // Find border lines & move text at the end of the document up
         List<Element> last_page = new ArrayList();
         Elements drawing = doc.getElementsByTag("draw:page").get(0).children();
         int borders = drawing.size() - 1;
@@ -96,7 +108,6 @@ public class Fixer {
             }
             style_names[2 - j] = e.attr("draw:style-name");
         }
-        drawing.addAll(borders - 3, last_page);
 
         Element layout = doc.getElementsByTag("style:page-layout-properties").get(0);
         HashMap<String, Double> old_offsets = new HashMap();
@@ -213,6 +224,8 @@ public class Fixer {
             }
             pages.add(new Page(page, scale, new_height_total));
         };
+        
+        List<List<Element>> content_pages = new ArrayList();
 
         int last_index = 0;
         int index = 0;
@@ -230,12 +243,21 @@ public class Fixer {
             // New page
             if (index == 3) {
                 int new_index = i - index + 1;
-                page_consumer.accept(drawing.subList(last_index, new_index));
+                List<Element> sublist = drawing.subList(last_index, new_index);
+                if (sublist.size() > 1) {
+                    content_pages.add(sublist);
+                }
                 last_index = i + 1;
                 index = 0;
             }
         }
 
+        content_pages.get(content_pages.size()-1).addAll(last_page);
+        
+        for (List<Element> content_page:content_pages) {
+            page_consumer.accept(content_page);
+        }
+        
         if (pages.size() == 1) {
             Page page = pages.get(0);
             layout.attr("fo:page-height", Unit.cm(page.height));

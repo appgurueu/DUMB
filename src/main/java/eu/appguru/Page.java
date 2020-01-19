@@ -41,7 +41,8 @@ public class Page {
                 }
                 new_style.attr("style:name", new_style_name);
                 // Scaling stuff
-                for (String attr:new String[] {"svg:stroke-width", "fo:padding-top", "fo:padding-bottom", "fo:padding-left", "fo:padding-right", "fo:font-size", "style:font-size-asian", "style:font-size-complex"}) {
+                /* Ignoring for now: "fo:padding-top", "fo:padding-bottom", "fo:padding-left", "fo:padding-right" */
+                for (String attr:new String[] {"svg:stroke-width", "fo:font-size", "style:font-size-asian", "style:font-size-complex"}) {
                     for (Element el:new_style.getElementsByAttribute(attr)) {
                         Unit u = new Unit(el.attr(attr));
                         u.value *= scale;
